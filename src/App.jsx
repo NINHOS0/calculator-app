@@ -63,6 +63,7 @@ function App() {
       } else if (opValue === "/") {
         const op = +display[opIndex - 1] / +display[opIndex + 1];
         setDisplay([...prev, op.toFixed(3).replace(/\.?0*$/, ""), ...next]);
+        if (isNaN(op)) setDisplay(["0"]);
       } else if (opValue === "+") {
         const op = +display[opIndex - 1] + +display[opIndex + 1];
         setDisplay([...prev, op.toFixed(3).replace(/\.?0*$/, ""), ...next]);
@@ -71,7 +72,6 @@ function App() {
         setDisplay([...prev, op.toFixed(3).replace(/\.?0*$/, ""), ...next]);
       }
     }
-    if (isNaN(display[0])) setDisplay(["0"]);
   }
 
   function find() {
